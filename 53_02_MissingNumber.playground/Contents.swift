@@ -15,7 +15,7 @@ class Solution {
      - parameters:
         - data: 递增数组
      - Returns: 缺失那个数字
-     解法：利用二分法分别查找连续出现数字的第一个和最后一个位置，根据两个位置可得出出现次数
+     解法：利用二分法查找，如果index和数据项相同，说明在右边部分，否则在左边部分
      */
     func GetMissingNumber(in data: [Int]) -> Int? {
         guard data.count > 0 else {
