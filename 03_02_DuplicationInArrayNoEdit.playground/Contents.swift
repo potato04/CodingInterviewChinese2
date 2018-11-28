@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题3（二）：不修改数组找出重复的数字
 // 题目：在一个长度为n+1的数组里的所有数字都在1到n的范围内，所以数组中至
 // 少有一个数字是重复的。请找出数组中任意一个重复的数字，但不能修改输入的
@@ -14,7 +13,7 @@ import XCTest
 class Solution {
     /**
      查找整数数组中任一重复的数字
-     - parameters:
+     - Parameters:
         - nums: 整数数组
      - Returns: 重复的整数
      */
@@ -23,11 +22,11 @@ class Solution {
         var end = nums.count - 1
         while start <= end {
             let middle = (end - start) / 2 + start
-            let count = countAtRange(nums, start: start, end: middle)
+            let count = countAtRange(nums, min: start, max: middle)
             if start == end {
                 if count > 1 {
                     return start
-                }else {
+                } else {
                     break
                 }
             }
@@ -40,17 +39,24 @@ class Solution {
         }
         return nil
     }
-    func countAtRange(_ nums:[Int], start: Int, end: Int) -> Int{
+    /**
+     统计数组nums元素大小在[min,max]范围内的个数
+     - Parameters:
+        - nums: 数组
+        - min: 最小值
+        - max: 最大值
+     - Returns: 重复的整数
+     */
+    func countAtRange(_ nums:[Int], min: Int, max: Int) -> Int{
         var count = 0
         for num in nums {
-            if num >= start && num <= end {
+            if num >= min && num <= max {
                 count += 1
             }
         }
         return count
     }
 }
-
 
 class UnitTests: XCTestCase {
     var solution: Solution!
@@ -103,6 +109,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-

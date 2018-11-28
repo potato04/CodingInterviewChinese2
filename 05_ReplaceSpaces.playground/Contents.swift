@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题5：替换空格
 // 题目：请实现一个函数，把字符串中的每个空格替换成"%20"。例如输入“We are happy.”，
 // 则输出“We%20are%20happy.”
@@ -15,7 +14,7 @@ import XCTest
 
 class Solution {
     /**
-     - parameters:
+     - Parameters:
         - charArray 输入的字符数组
      - Returns: 替换之后的字符数组
      */
@@ -23,7 +22,6 @@ class Solution {
         return charArray
     }
 }
-
 
 class UnitTests: XCTestCase {
     var solution: Solution!
@@ -33,8 +31,3 @@ class UnitTests: XCTestCase {
         solution = Solution()
     }
 }
-
-
-
-
-

@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题9：用两个栈实现队列
 // 题目：用两个栈实现一个队列。队列的声明如下，请实现它的两个函数appendTail
 // 和deleteHead，分别完成在队列尾部插入结点和在队列头部删除结点的功能。
@@ -15,9 +14,18 @@ class MyQueue<T> {
     private var array1 = [T]()
     private var array2 = [T]()
     
+    /**
+     在队列末端添加元素
+     - Parameters:
+        - element:待添加的元素
+     */
     func appendTail(element: T) {
         array1.append(element)
     }
+    /**
+     删除头节点
+     - Returns: 被删除的头节点
+     */
     func deleteHead() -> T? {
         if array2.count > 0 {
           return array2.removeLast()
@@ -48,10 +56,9 @@ class UnitTests: XCTestCase {
         queue.appendTail(element: 1)
         queue.appendTail(element: 2)
         queue.appendTail(element: 3)
-
         XCTAssertEqual(1, queue.deleteHead()!)
         XCTAssertEqual(2, queue.deleteHead()!)
-        
+    
         queue.appendTail(element: 4)
         XCTAssertEqual(3, queue.deleteHead()!)
         
@@ -61,12 +68,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(5, queue.deleteHead()!)
     }
 }
-    
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

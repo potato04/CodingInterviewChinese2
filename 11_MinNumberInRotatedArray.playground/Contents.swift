@@ -12,8 +12,8 @@ import XCTest
 
 class Solution {
     /**
-     
-     - parameters:
+     旋转数组的最小数字
+      - Parameters:
         - nums: 一个递增数组的旋转
       - Returns: 数组中最小的那个数字
      */
@@ -30,7 +30,6 @@ class Solution {
             }
             return min
         }
-        
         var startIndex = 0
         var endIndex = nums.count - 1
         while startIndex != endIndex - 1 {
@@ -45,7 +44,6 @@ class Solution {
         return nums[endIndex]
     }
 }
-
 
 class UnitTests: XCTestCase {
     var solution: Solution!
@@ -88,9 +86,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

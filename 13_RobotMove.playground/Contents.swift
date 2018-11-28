@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题13：机器人的运动范围
 // 题目：地上有一个m行n列的方格。一个机器人从坐标(0, 0)的格子开始移动，它
 // 每一次可以向左、右、上、下移动一格，但不能进入行坐标和列坐标的数位之和
@@ -13,11 +12,12 @@ import XCTest
 
 class Solution {
     /**
-     - parameters:
+     计算机器人在m行n列方格中可到达的格子数量
+     - Parameters:
         - rows: 方格行数
         - cols: 方格列数
         - k: 行坐标和列坐标的数位之和限制
-      - Returns: 返回能够到达格子数
+     - Returns: 返回能够到达格子数
      */
     func Count(rows: Int, cols: Int, k: Int) -> Int{
         var visited = Array(repeating: Array(repeating: false, count: cols), count: rows)
@@ -47,7 +47,6 @@ class Solution {
         return sum
     }
 }
-
 
 class UnitTests: XCTestCase {
     var solution: Solution!
@@ -96,14 +95,6 @@ class UnitTests: XCTestCase {
     func testCase9() {
         XCTAssertEqual(solution.Count(rows: 10, cols: 10, k: -1), 0)
     }
-    
-    
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

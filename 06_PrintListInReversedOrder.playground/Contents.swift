@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题6：从尾到头打印链表
 // 题目：输入一个链表的头结点，从尾到头反过来打印出每个结点的值。
 
@@ -14,7 +13,6 @@ import XCTest
 class ListNode {
     var next: ListNode?
     var value: Int
-    
     init(value: Int, next: ListNode?) {
         self.value = value
         self.next = next
@@ -24,8 +22,8 @@ class ListNode {
 class Solution {
     /**
      从尾到头打印链表
-     - parameters:
-     - listnode: 头结点
+     - Parameters:
+        - listnode: 头结点
      - Returns:
      */
     func printListNode(_ node: ListNode){
@@ -41,10 +39,8 @@ class Solution {
     }
 }
 
-
 class UnitTests: XCTestCase {
     var solution: Solution!
-    
     override func setUp() {
         super.setUp()
         solution = Solution()
@@ -57,10 +53,9 @@ class UnitTests: XCTestCase {
         let node3 = ListNode(value: 3, next: node4)
         let node2 = ListNode(value: 2, next: node3)
         let node1 = ListNode(value: 1, next: node2)
-        
         solution.printListNode(node1)
     }
-    
+
     ///只有一个节点 1
     func testCase2() {
         let node1 = ListNode(value: 1, next: nil)
@@ -70,7 +65,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-

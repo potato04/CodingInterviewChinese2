@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题12：矩阵中的路径
 // 题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有
 // 字符的路径。路径可以从矩阵中任意一格开始，每一步可以在矩阵中向左、右、
@@ -18,42 +17,54 @@ import XCTest
 
 class Solution {
     /**
-     
-     - parameters:
+     判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。
+     - Parameters:
         - matrix: 字符矩阵
-        - str: 需要查找的字符串
-      - Returns: 矩阵中是否存在包含str字符串所有字符的路径
+        - path: 需要查找的字符串
+     - Returns: 是否存在
      */
-    func Find(_ matrix: [[Character]], _ str: String) -> Bool{
+    func Find(_ matrix: [[Character]], _ path: String) -> Bool{
         var visited = Array(repeating: Array(repeating: false, count: matrix[0].count), count: matrix.count)
-        var strIndex = 0
+        var pathIndex = 0
         for row in 0..<matrix.count {
             for col in 0..<matrix[row].count {
-                if FindCore(matrix: matrix, row: row, col: col, str: str,
-                            strIndex: &strIndex, visited: &visited) {
+                if FindCore(matrix: matrix, row: row, col: col, path: path,
+                            pathIndex: &pathIndex, visited: &visited) {
                     return true
                 }
             }
         }
         return false
     }
-    private func FindCore(matrix: [[Character]], row: Int, col: Int, str: String,
-                          strIndex: inout Int, visited: inout [[Bool]]) -> Bool{
-        if strIndex >= str.count {
+    /**
+     查找matrix的第row行和第col列的字符是否和path的第pathIndex个字符相同
+     并判断矩阵相邻的字符串是否与pathIndex下一个字符相同
+     - Parameters:
+        - matrix: 字符矩阵
+        - row: 矩阵第row行
+        - col: 矩阵第col列
+        - path: 查找的字符串
+        - pathIndex: 当前查找的第pathIndex个字符
+        - visited：已经对比过的记录
+     - Returns: 是否相同
+     */
+    private func FindCore(matrix: [[Character]], row: Int, col: Int, path: String,
+                          pathIndex: inout Int, visited: inout [[Bool]]) -> Bool{
+        if pathIndex >= path.count {
             return true
         }
         var result = false
         if(row >= 0 && row < matrix.count && col >= 0 && col < matrix[0].count &&
-            matrix[row][col] == str[str.index(str.startIndex, offsetBy: strIndex)] && !visited[row][col]) {
-            strIndex += 1
+            matrix[row][col] == path[path.index(path.startIndex, offsetBy: pathIndex)] && !visited[row][col]) {
+            pathIndex += 1
             visited[row][col] = true
-            result = FindCore(matrix: matrix, row: row, col: col - 1, str: str, strIndex: &strIndex, visited: &visited) ||
-                FindCore(matrix: matrix, row: row - 1, col: col, str: str, strIndex: &strIndex, visited: &visited) ||
-                FindCore(matrix: matrix, row: row, col: col + 1, str: str, strIndex: &strIndex, visited: &visited) ||
-                FindCore(matrix: matrix, row: row + 1, col: col, str: str, strIndex: &strIndex, visited: &visited)
+            result = FindCore(matrix: matrix, row: row, col: col - 1, path: path, pathIndex: &pathIndex, visited: &visited) ||
+                FindCore(matrix: matrix, row: row - 1, col: col, path: path, pathIndex: &pathIndex, visited: &visited) ||
+                FindCore(matrix: matrix, row: row, col: col + 1, path: path, pathIndex: &pathIndex, visited: &visited) ||
+                FindCore(matrix: matrix, row: row + 1, col: col, path: path, pathIndex: &pathIndex, visited: &visited)
             
             if !result {
-                strIndex -= 1
+                pathIndex -= 1
                 visited[row][col] = false
             }
         }
@@ -184,10 +195,4 @@ class UnitTests: XCTestCase {
     }
 }
 
-UnitTests.defaultTestSuite.run()
-
-
-
-
-
-
+//UnitTests.defaultTestSuite.run()

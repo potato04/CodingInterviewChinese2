@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题14：剪绳子
 // 题目：给你一根长度为n绳子，请把绳子剪成m段（m、n都是整数，n>1并且m≥1）。
 // 每段的绳子的长度记为k[0]、k[1]、……、k[m]。k[0]*k[1]*…*k[m]可能的最大乘
@@ -13,10 +12,10 @@ import XCTest
 
 class Solution {
     /**
-     动态规划法
-     - parameters:
+     长度为n的绳子剪成m段后的最大乘积（动态规划法）
+     - Parameters:
         - length: 绳子长度
-      - Returns: 段数的最大乘积
+     - Returns: 最大乘积
      */
     func maxProductAfterCutting_solution1(length: Int) -> Int {
         if length < 2 {
@@ -48,8 +47,8 @@ class Solution {
     }
     /**
      贪心算法：尽可能多地减去长度为3的绳子段，当绳子最后剩下的长度为4的时候，剪成2*2的2段
-     - parameters:
-     - length: 绳子长度
+     - Parameters:
+        - length: 绳子长度
      - Returns: 段数的最大乘积
      */
     func maxProductAfterCutting_solution2(length: Int) -> Int {
@@ -140,9 +139,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

@@ -30,8 +30,8 @@ class BinaryTreeNode: Equatable {
 class Solution {
     /**
      给定一棵二叉树的某节点，查找中序序列该节点的下一节点
-     - parameters:
-     - node: 给定节点
+     - Parameters:
+        - node: 给定节点
      - Returns: 中序序列的下一个节点
      */
     func GetNext(_ node: BinaryTreeNode) -> BinaryTreeNode?{
@@ -61,10 +61,8 @@ class Solution {
     }
 }
 
-
 class UnitTests: XCTestCase {
     var solution: Solution!
-    
     override func setUp() {
         super.setUp()
         solution = Solution()
@@ -75,22 +73,18 @@ class UnitTests: XCTestCase {
     //       5 7    9  11
     func testCase1_7() {
         let node_8 = BinaryTreeNode(value: 8, parent: nil, left: nil, right: nil)
-        
         let node_6 = BinaryTreeNode(value: 6, parent: node_8, left: nil, right: nil)
         let node_5 = BinaryTreeNode(value: 5, parent: node_6, left: nil, right: nil)
         let node_7 = BinaryTreeNode(value: 7, parent: node_6, left: nil, right: nil)
         node_6.left = node_5
         node_6.right = node_7
-        
         let node_10 = BinaryTreeNode(value: 10, parent: node_8, left: nil, right: nil)
         let node_9 = BinaryTreeNode(value: 9, parent: node_10, left: nil, right: nil)
         let node_11 = BinaryTreeNode(value: 11, parent: node_10, left: nil, right: nil)
         node_10.left = node_9
         node_10.right = node_11
-        
         node_8.left = node_6
         node_8.right = node_10
-        
         XCTAssertEqual(solution.GetNext(node_8)!, node_9)
         XCTAssertEqual(solution.GetNext(node_6)!, node_7)
         XCTAssertEqual(solution.GetNext(node_10)!, node_11)
@@ -111,7 +105,6 @@ class UnitTests: XCTestCase {
         node_5.left = node_4
         node_4.left = node_3
         node_3.left = node_2
-        
         XCTAssertEqual(solution.GetNext(node_5), nil)
         XCTAssertEqual(solution.GetNext(node_4)!, node_5)
         XCTAssertEqual(solution.GetNext(node_3)!, node_4)
@@ -129,7 +122,6 @@ class UnitTests: XCTestCase {
         node_2.right = node_3
         node_3.right = node_4
         node_4.right = node_5
-        
         XCTAssertEqual(solution.GetNext(node_5), nil)
         XCTAssertEqual(solution.GetNext(node_4)!, node_5)
         XCTAssertEqual(solution.GetNext(node_3)!, node_4)
@@ -143,9 +135,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题10：斐波那契数列
 // 题目：写一个函数，输入n，求斐波那契（Fibonacci）数列的第n项。
 
@@ -10,10 +9,10 @@ import XCTest
 
 class Solution {
     /**
-     递归方式-效率低
-     - parameters:
+     求斐波那契数列中的第n个元素（递归方式-效率低）
+     - Parameters:
         - n: n
-      - Returns: 第n个斐波那契数列的值
+     - Returns: 第n个斐波那契数列的值
      */
     func recursion(_ n: Int) -> Int{
         if n <= 0 {
@@ -25,9 +24,9 @@ class Solution {
         return recursion(n - 1) + recursion(n - 2)
     }
     /**
-     循环方式-效率较高
-     - parameters:
-     - n: n
+     求斐波那契数列中的第n个元素（循环方式-效率较高）
+     - Parameters:
+        - n: n
      - Returns: 第n个斐波那契数列的值
      */
     func loop(_ n: Int) -> Int {
@@ -39,7 +38,7 @@ class Solution {
         }
         var num1 = 0
         var num2 = 1
-        for i in 2...n {
+        for _ in 2...n {
             let sum = num1 + num2
             num1 = num2
             num2 = sum
@@ -78,9 +77,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

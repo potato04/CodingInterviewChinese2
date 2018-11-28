@@ -1,22 +1,22 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题16：数值的整数次方
 // 题目：实现函数double Power(double base, int exponent)，求base的exponent
 // 次方。不得使用库函数，同时不需要考虑大数问题。
+// 主要考察代码规范性、完整性
+// 需要考虑exponent为0、负数的情况以及错误处理
 
 import Foundation
 import XCTest
 
 class Solution {
     /**
-     主要考察代码规范性、完整性
-     需要考虑exponent为0、负数的情况以及错误处理
-     - parameters:
+     计算base的exponent次幂，exponent为正数
+     - Parameters:
         - base：底数
         - exponent: 指数
-      - Returns: 如果无法求值，返回nil，否者返回double类型数据
+     - Returns: 如果无法求值，返回nil，否者返回幂指数的结果
      */
     func pow(_ base: Double, exponent: Int) -> Double? {
         if base == 0  && exponent < 0 {
@@ -29,14 +29,20 @@ class Solution {
         }
         return result
     }
-    private func powExp(_ base: Double, exponent: Int) -> Double{
+    /**
+     计算base的exponent次幂，exponent为正数
+     - Parameters:
+        - base：底数
+        - exponent: 指数
+     - Returns: 幂指数的结果
+     */
+    private func powExp(_ base: Double, exponent: Int) -> Double {
         if exponent == 0 {
             return 1
         }
         if exponent == 1 {
             return base
         }
-        
         var result = powExp(base, exponent: exponent / 2)
         result *= result
         if exponent % 2 == 1 {
@@ -45,7 +51,6 @@ class Solution {
         return result
     }
 }
-
 
 class UnitTests: XCTestCase {
     var solution: Solution!
@@ -82,13 +87,6 @@ class UnitTests: XCTestCase {
     func testCase7() {
         XCTAssertEqual(solution.pow(0, exponent: -4), nil)
     }
-    
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

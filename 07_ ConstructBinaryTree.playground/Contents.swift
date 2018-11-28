@@ -48,14 +48,12 @@ class BinaryTreeNode {
         result.append(node.value)
         inOrderCore(node.right, result: &result)
     }
-    
-    
 }
 
 class Solution {
     /**
      根据前序序列和中序序列构建二叉树
-     - parameters:
+     - Parameters:
         - preorder: 前序序列数组
         - inorder: 中序序列数组
      - Returns: BinaryTreeNode 构建好的二叉树根节点
@@ -79,7 +77,6 @@ class Solution {
         if rootIndexInOrder == -1 {
             return nil
         }
-        
         let leftTreeElementCount = rootIndexInOrder - inStartIndex
         if preStartIndex + 1 <= preStartIndex + leftTreeElementCount {
             root.left = ConstructCore(preorder, preStartIndex + 1, preStartIndex + leftTreeElementCount,
@@ -93,10 +90,8 @@ class Solution {
     }
 }
 
-
 class UnitTests: XCTestCase {
     var solution: Solution!
-    
     override func setUp() {
         super.setUp()
         solution = Solution()
@@ -182,12 +177,6 @@ class UnitTests: XCTestCase {
         XCTAssertFalse(result?.preOrder() == preorder)
         XCTAssertFalse(result?.inOrder() == inorder)
     }
-    
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
