@@ -17,7 +17,7 @@ class Solution {
      主要考察n比较大时，long longlong都不能表示的情况
      - Parameters:
         - n：最大的位数
-     **/
+     */
     func print1ToMaxOfNDigits(_ n: Int){
         if n <= 0 {
             return
@@ -34,7 +34,7 @@ class Solution {
      - Parameters:
         - nums: 字符数组
         - index: 当前需要替换字符的数组索引
-     **/
+     */
     private func printCoreRecursively(_ nums:[Character], index: Int){
         var nums = nums
         if nums.count - 1 == index{
@@ -51,7 +51,7 @@ class Solution {
      打印字符数组里的所有字符，如果数组前几个字符是0，则忽略它们
      - Parameters:
         - nums：输入的字符数组
-     **/
+     */
     private func printNum(_ nums:[Character]){
         var isBeginning = true
         for char in nums {

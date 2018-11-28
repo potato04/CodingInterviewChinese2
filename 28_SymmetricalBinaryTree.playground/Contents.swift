@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题28：对称的二叉树
 // 题目：请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和
 // 它的镜像一样，那么它是对称的。
@@ -9,6 +8,7 @@
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var parent: BinaryTreeNode?
     var left: BinaryTreeNode?
@@ -30,13 +30,20 @@ class BinaryTreeNode: Equatable {
 class Solution {
     /**
      判断二叉树是否对称
-     - parameters:
+     - Parameters:
         - root: 树
      - Returns: 是否对称
      */
     func isSymmetrical(_ root: BinaryTreeNode?) -> Bool{
         return isSymmetrical(root, root)
     }
+    /**
+     递归判断两个节点及其左右子节点是否相同（都为空也等于相同）
+     - Parameters:
+        - node1: 节点1
+        - node2: 节点2
+     - Returns: 是否对称
+     */
     private func isSymmetrical(_ node1: BinaryTreeNode?, _ node2: BinaryTreeNode?) -> Bool {
         if node1 == nil && node2 == nil {
             return true
@@ -217,9 +224,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

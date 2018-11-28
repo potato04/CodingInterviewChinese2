@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题21：调整数组顺序使奇数位于偶数前面
 // 题目：输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有
 // 奇数位于数组的前半部分，所有偶数位于数组的后半部分。
@@ -12,13 +11,21 @@ import XCTest
 
 class Solution {
     /**
-     - parameters:
-     - array: 待排序的数组
+     调整数组，将数组中的所有奇数位于偶数之前
+     - Parameters:
+        - array: 待排序的数组
      - Returns: 排序后的数组
      */
     func ReorderOddEven(array: [Int]) -> [Int] {
         return reorder(array: array, criteria: { ($0 % 2) == 0 ? false : true})
     }
+    /**
+     从数组的头尾向中间遍历数组并调整（criteria）
+     - Parameters:
+        - array: 待调整的数组
+        - criteria: 调整方法
+     - Returns: 调整后的数组
+     */
     private func reorder(array: [Int], criteria: (Int) -> Bool) -> [Int] {
         var array = array
         var startIndex = 0
@@ -90,9 +97,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

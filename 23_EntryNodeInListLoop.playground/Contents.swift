@@ -1,13 +1,11 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题23：链表中环的入口结点
 // 题目：一个链表中包含环，如何找出环的入口结点？例如，在如图的链表中，
 // 环的入口结点是结点3。
 //        ↙----¬
 // 1->2->3->4->5
-
 
 import Foundation
 import XCTest
@@ -23,12 +21,11 @@ class ListNode {
     }
 }
 
-
 class Solution {
     /**
-     
-     - parameters:
-     - head: 链表的头节点
+     如果链表中存在环，则返回环的入口节点
+     - Parameters:
+        - head: 链表的头节点
      - Returns: 返回环的入口节点
      */
     func EntryNodeOfLoop(_ head: ListNode?) -> ListNode? {
@@ -59,8 +56,8 @@ class Solution {
      查找快慢指针相遇的节点：
      定义两个指针：一个慢指针（一次走一步）一个快指针（一次走两步）
      如果快指针追上了慢指针，则链表包含环
-     - parameters:
-     - head: 链表的头节点
+     - Parameters:
+        - head: 链表的头节点
      - Returns: 返回环中的某个节点，如果为空，则说明不存在环
      */
     func MeetingNode(_ head: ListNode?) -> ListNode? {
@@ -167,9 +164,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

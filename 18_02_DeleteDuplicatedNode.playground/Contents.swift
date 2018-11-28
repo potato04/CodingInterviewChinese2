@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题18（二）：删除链表中重复的结点
 // 题目：在一个排序的链表中，如何删除重复的结点？
 // 例如: 1->2->3->3->4->4->5 的重复节点删除之后只剩下 1->2->5
@@ -21,10 +20,10 @@ class ListNode {
     }
 }
 
-
 class Solution {
     /**
-     - parameters:
+     移除排序链表中重复的节点
+     - Parameters:
         - head：待删除的头节点
      - Returns: 新的头节点
      */
@@ -48,7 +47,6 @@ class Solution {
                 var toBeDel: ListNode? = pNode
                 while toBeDel != nil && toBeDel!.value == value {
                     pNext = toBeDel?.next
-                    toBeDel = nil
                     toBeDel = pNext
                 }
                 if pPreNode == nil {
@@ -56,6 +54,7 @@ class Solution {
                 } else {
                     pPreNode?.next = pNext
                 }
+                pNode = pNext
             }
         }
         return newHead
@@ -223,9 +222,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

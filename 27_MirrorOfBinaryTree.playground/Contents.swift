@@ -1,13 +1,13 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题27：二叉树的镜像
 // 题目：请完成一个函数，输入一个二叉树，该函数输出它的镜像。
 
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var parent: BinaryTreeNode?
     var left: BinaryTreeNode?
@@ -29,9 +29,9 @@ class BinaryTreeNode: Equatable {
 class Solution {
     /**
      实现二叉树的镜像（递归左右翻转）
-     - parameters:
+     - Parameters:
         - root: 树的根节点
-     - Returns: 树2是否是树1的子树
+     - Returns: 镜像之后的根节点
      */
     func MirrorRecursively(_ node: BinaryTreeNode?){
         guard let node = node else {
@@ -56,9 +56,9 @@ class Solution {
     
     /**
      实现二叉树的镜像（循环）
-     - parameters:
-     - root: 树的根节点
-     - Returns: 树2是否是树1的子树
+     - Parameters:
+        - root: 树的根节点
+     - Returns: 镜像之后的根节点
      */
     func MirrorIteratively(_ node: BinaryTreeNode?){
         guard let node = node else {
@@ -183,9 +183,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题18（一）：在O(1)时间删除链表结点
 // 题目：给定单向链表的头指针和一个结点指针，定义一个函数在O(1)时间删除该
 // 结点。
@@ -9,7 +8,7 @@
 import Foundation
 import XCTest
 
-//定义链表节点
+//链表节点
 class ListNode {
     var next: ListNode?
     var value: Int
@@ -24,7 +23,7 @@ class ListNode {
 class Solution {
     /**
      o(1)方式删除链表的给定节点
-     - parameters:
+     - Parameters:
         - head：头节点
         - toBeDeleted: 需要删除的节点
      */
@@ -111,9 +110,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

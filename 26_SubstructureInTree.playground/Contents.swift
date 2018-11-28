@@ -1,13 +1,13 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题26：树的子结构
 // 题目：输入两棵二叉树A和B，判断B是不是A的子结构。
 
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var parent: BinaryTreeNode?
     var left: BinaryTreeNode?
@@ -28,8 +28,8 @@ class BinaryTreeNode: Equatable {
 
 class Solution {
     /**
-     
-     - parameters:
+     判断树2是否是树1的子树
+     - Parameters:
         - root1: 树1
         - root2: 树2
      - Returns: 树2是否是树1的子树
@@ -49,7 +49,14 @@ class Solution {
         }
         return result
     }
-    func DoseTree1HavaeTree2(_ root1: BinaryTreeNode?, _ root2: BinaryTreeNode?) -> Bool {
+    /**
+     判断树1是否包含树2(包括树2为空)
+     - Parameters:
+        - root1: 树1
+        - root2: 树2
+     - Returns: 是否包含
+     */
+    private func DoseTree1HavaeTree2(_ root1: BinaryTreeNode?, _ root2: BinaryTreeNode?) -> Bool {
         if root2 == nil {
             return true
         }
@@ -286,9 +293,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

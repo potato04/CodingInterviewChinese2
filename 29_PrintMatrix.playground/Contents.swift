@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题29：顺时针打印矩阵
 // 题目：输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
 
@@ -11,7 +10,7 @@ import XCTest
 class Solution {
     /**
      打印（返回）矩阵顺时针序列
-     - parameters:
+     - Parameters:
         - numbers: 矩阵（二维数组）
      - Returns: 顺时针序列
      */
@@ -27,6 +26,13 @@ class Solution {
         }
         return result
     }
+    /**
+     打印（返回）矩阵顺时针序列
+     - Parameters:
+        - numbers: 矩阵（二维数组）
+        - start: 矩阵的轮数
+     - Returns: 顺时针序列
+     */
     private func PrintMatrixInCircle(_ numbers:[[Int]], start: Int) -> [Int] {
         let endX = numbers[start].count - 1 - start
         let endY = numbers.count - 1 - start
@@ -184,9 +190,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-
