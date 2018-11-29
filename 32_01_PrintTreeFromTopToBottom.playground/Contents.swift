@@ -1,13 +1,13 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题32（一）：不分行从上往下打印二叉树
 // 题目：从上往下打印出二叉树的每个结点，同一层的结点按照从左到右的顺序打印。
 
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var parent: BinaryTreeNode?
     var left: BinaryTreeNode?
@@ -26,6 +26,12 @@ class BinaryTreeNode: Equatable {
 }
 
 class Solution {
+    /**
+     按从上到下从左到右的顺序返回二叉树所有节点的值
+     - Parameters:
+        - root: 二叉树根节点
+     - Returns: 二叉树的所有节点值
+     */
     func PrintFromTopToBottom(_ root: BinaryTreeNode) -> [Int] {
         var result = [Int]()
         var queue = [BinaryTreeNode]()
@@ -33,7 +39,6 @@ class Solution {
         while queue.count > 0 {
             let node = queue.first!
             result.append(node.value)
-            
             if node.left != nil {
                 queue.append(node.left!)
             }
@@ -123,9 +128,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

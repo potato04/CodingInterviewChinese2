@@ -12,7 +12,7 @@ import XCTest
 class Solution {
     /**
      查找整数数组中任一重复的数字
-     - parameters:
+     - Parameters:
         - nums: 整数数组
      - Returns: Tuple(重复数字的索引，值)
      */

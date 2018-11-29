@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题32（二）：分行从上到下打印二叉树
 // 题目：从上到下按层打印二叉树，同一层的结点按从左到右的顺序打印，每一层
 // 打印到一行。
@@ -9,6 +8,7 @@
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var parent: BinaryTreeNode?
     var left: BinaryTreeNode?
@@ -27,6 +27,13 @@ class BinaryTreeNode: Equatable {
 }
 
 class Solution {
+    /**
+     以二维数组的形式分层返回按从上到下从左到右的顺序的二叉树所有节点的值
+     二维数组的第一个子数组的元素为根节点，第二个子数组为第二层的所有节点，以此类推
+     - Parameters:
+        - root: 二叉树根节点
+     - Returns: 二叉树的所有节点值
+     */
     func Print(_ root: BinaryTreeNode) -> [[Int]] {
         var result = [[Int]]()
         var resultItem = [Int]()
@@ -141,9 +148,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

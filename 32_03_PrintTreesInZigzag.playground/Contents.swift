@@ -10,6 +10,7 @@
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var parent: BinaryTreeNode?
     var left: BinaryTreeNode?
@@ -28,21 +29,25 @@ class BinaryTreeNode: Equatable {
 }
 
 class Solution {
+    /**
+     按照之字形顺序返回二叉树所有节点的值
+     即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。
+     - Parameters:
+        - root: 二叉树根节点
+     - Returns: 二叉树的所有节点值
+     */
     func Print(_ root: BinaryTreeNode) -> [Int] {
         var results = [Int]()
         var levels = [Int: [BinaryTreeNode]]()
         levels[0] = [BinaryTreeNode]()
         levels[1] = [BinaryTreeNode]()
-        
         var current = 0
         var next = 1
-        
         levels[current]?.append(root)
         while !levels[0]!.isEmpty || !levels[1]!.isEmpty {
             let node = levels[current]!.last!
             levels[current]?.removeLast()
             results.append(node.value)
-            
             if current == 0 {
                 if node.left != nil {
                     levels[next]?.append(node.left!)
@@ -58,13 +63,11 @@ class Solution {
                     levels[next]?.append(node.left!)
                 }
             }
-            
             if levels[current]!.isEmpty {
                 current = 1 - current
                 next = 1 - next
             }
         }
-        
         return results
     }
 }
@@ -151,9 +154,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-
