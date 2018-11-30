@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题35：复杂链表的复制
 // 题目：请实现函数ComplexListNode* Clone(ComplexListNode* pHead)，复
 // 制一个复杂链表。在复杂链表中，每个结点除了有一个m_pNext指针指向下一个
@@ -10,6 +9,7 @@
 import Foundation
 import XCTest
 
+//复杂链表结构
 class ComplexListNode: Equatable {
     var next: ComplexListNode?
     var sibling: ComplexListNode?
@@ -28,17 +28,21 @@ class ComplexListNode: Equatable {
 class Solution {
     /**
      复制复杂链表
-     - parameters:
-     - head: 原始链表的头
+     - Parameters:
+        - head: 原始链表的头
      - Returns: 复制的链表头
      */
-
     func CopyComplexList(_ head: ComplexListNode) -> ComplexListNode {
         CloneNodes(head)
         ConnectSiblingNodes(head)
         return ReconnectNodes(head)
     }
-    //复制节点： 使得 A->B->C 变成 A->A'->B->B'->C->C' 暂不考虑 sibling
+    
+    /**
+     复制复杂链表，使得 A->B->C 变成 A->A'->B->B'->C->C' 暂不考虑 sibling
+     - Parameters:
+        - head: 链表的头
+     */
     private func CloneNodes(_ head: ComplexListNode) {
         var node: ComplexListNode? = head
         while node != nil {
@@ -47,7 +51,12 @@ class Solution {
             node = cloned.next
         }
     }
-    //连接sibling：如果 A 的 sibling 是 C，那么 A‘ 的 sibling 必然是 C’ ，即 A.sibling.next
+    
+    /**
+     连接sibling，如果 A 的 sibling 是 C，那么 A‘ 的 sibling 必然是 C’ ，即 A.sibling.next
+     - Parameters:
+        - head: 链表的头
+     */
     private func ConnectSiblingNodes(_ head: ComplexListNode) {
         var node: ComplexListNode? = head
         while node != nil {
@@ -58,7 +67,12 @@ class Solution {
             node = cloned?.next
         }
     }
-    //分离节点
+    /**
+     分离两条合并在一起的复杂链表，使得 A->A'->B->B'->C->C' 编程两条链表 A->B->C 和 A'->B'->C'
+     - Parameters:
+        - head: 未分离的链表头
+     - Returns: 复制出来的链表头
+     */
     private func ReconnectNodes(_ head: ComplexListNode) -> ComplexListNode {
         var node: ComplexListNode? = head
         var clonedHead: ComplexListNode? = nil
@@ -79,17 +93,22 @@ class Solution {
         }
         return clonedHead!
     }
-    
-    
 }
+
 class UnitTests: XCTestCase {
     var solution: Solution!
-    
     override func setUp() {
         super.setUp()
         solution = Solution()
     }
     
+    /**
+     对比两条复杂链表结构以及值是否相同
+     - Parameters:
+        - left: 复杂链表1
+        - right: 复杂链表2
+     - Returns: 对比结果
+     */
     private func isComplexListEqual(_ left: ComplexListNode, _ right: ComplexListNode) -> Bool{
         var node_left: ComplexListNode? = left
         var node_right: ComplexListNode? = right
@@ -118,9 +137,9 @@ class UnitTests: XCTestCase {
     }
     
     //          -----------------
-    //         \|/              |
+    //          ↓               |
     //  1-------2-------3-------4-------5
-    //  |       |      /|\             /|\
+    //  |       |       ↑               ↑
     //  --------+--------               |
     //          -------------------------
     func testCase1() {
@@ -138,10 +157,10 @@ class UnitTests: XCTestCase {
     }
     // Sibling指向结点自身
     //          -----------------
-    //         \|/              |
+    //          ↓               |
     //  1-------2-------3-------4-------5
-    //         |       | /|\           /|\
-    //         |       | --             |
+    //         |       | ↑              ↑
+    //         |       | -              |
     //         |------------------------|
     func testCase2() {
         let node5 = ComplexListNode(value: 5, next: nil, sibling: nil)
@@ -158,9 +177,9 @@ class UnitTests: XCTestCase {
     }
     // Sibling形成环
     //          -----------------
-    //         \|/              |
+    //          ↓               |
     //  1-------2-------3-------4-------5
-    //          |              /|\
+    //          |               ↑
     //          |               |
     //          |---------------|
     func testCase3() {
@@ -184,11 +203,4 @@ class UnitTests: XCTestCase {
     }
 }
 
-
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

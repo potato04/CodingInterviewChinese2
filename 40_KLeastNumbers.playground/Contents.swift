@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题40：最小的k个数
 // 题目：输入n个整数，找出其中最小的k个数。例如输入4、5、1、6、2、7、3、8
 // 这8个数字，则最小的4个数字是1、2、3、4。
@@ -12,12 +11,12 @@ import XCTest
 class Solution {
     
     /**
-     原理：通过partition的方式找出
      输入n个整数，找出其中最小的k个数。
-     - parameters:
-     - nums: n个整数
-     - k: 最小的k个数
-     - Returns: 出现次数超过数组长度一半的数字
+     解法：通过partition的方式找出
+     - Parameters:
+        - nums: 数组
+        - k: k
+     - Returns: 最小的K个数
      */
     func GetLeastNumbers_Solution1(_ nums: [Int], k: Int) -> [Int] {
         var nums = nums
@@ -29,7 +28,7 @@ class Solution {
         var index = 0
         
         (index, nums) = partition(nums, start: start, end: end)
-
+        
         while index != k - 1 {
             if index > k - 1 {
                 end = index - 1
@@ -40,6 +39,14 @@ class Solution {
         }
         return Array(nums[..<k])
     }
+    /**
+     将数组在指定范围内[start，end]分区，使得左边部分数字比右边部分的小
+     - Parameters:
+        - nums: 数组
+        - start: 分区开始索引
+        - end: 分区结束索引
+     - Returns: index：当前分区的分界索引  newNums:分区之后的新数组
+     */
     func partition (_ nums: [Int], start: Int, end: Int) -> (index: Int, newNums: [Int]) {
         if nums.count == 0 || start > end || end > nums.count {
             return (-1, nums)
@@ -68,6 +75,14 @@ class Solution {
         nums = swap(nums, a: start, b: endIndex)
         return (endIndex, nums)
     }
+    /**
+     交换数组中的两个元素
+     - Parameters:
+        - nums: 数组
+        - a: 索引a
+        - b: 索引b
+     - Returns: 交换之后的数组
+     */
     private func swap(_ nums:[Int], a: Int, b: Int) -> [Int] {
         if nums.count == 0 || a > nums.count || b > nums.count {
             return nums
@@ -79,12 +94,12 @@ class Solution {
         return nums
     }
     /**
-     原理：遍历数组，使用一个最大堆保存最小的k个数（不改变数组，不用一次性全部加载数据，所以适合大数据处理）
      输入n个整数，找出其中最小的k个数。
-     - parameters:
-     - nums: n个整数
-     - k: 最小的k个数
-     - Returns: 出现次数超过数组长度一半的数字
+     解法：遍历数组，使用一个最大堆保存最小的k个数（不改变数组，不用一次性全部加载数据，所以适合大数据处理）
+     - Parameters:
+        - nums: n个整数
+        - k: k
+     - Returns: 最小的k个数
      */
     func GetLeastNumbers_Solution2(_ nums: [Int], k: Int) -> [Int] {
         var heap = Heap<Int>(sort: >)
@@ -163,11 +178,4 @@ class UnitTests: XCTestCase {
     }
 }
 
-
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

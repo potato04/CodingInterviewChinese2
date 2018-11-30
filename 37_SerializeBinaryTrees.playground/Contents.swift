@@ -1,13 +1,13 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题37：序列化二叉树
 // 题目：请实现两个函数，分别用来序列化和反序列化二叉树。
 
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var left: BinaryTreeNode?
     var right: BinaryTreeNode?
@@ -30,47 +30,57 @@ class Solution {
         6      10
       5   7   9  11
      以上二叉树将序列化成 8,6,5,nil,nil,7,nil,nil,10,9,nil,nil,11,nil,nil,
-     
-     - parameters:
-     - root: 树的根节点
+     - Parameters:
+        - root: 树的根节点
      - Returns: 序列化之后的字符串
      */
     func Serialize(_ root: BinaryTreeNode?) -> String  {
        return Serialize(root, "")
     }
-    private func Serialize(_ root: BinaryTreeNode?, _ result: String) -> String  {
-        if root == nil {
+    /**
+     以中序方式序列化二叉树
+     - Parameters:
+        - node: 树节点
+        - result: 初始序列内容
+     - Returns: 序列化之后的内容
+     */
+    private func Serialize(_ node: BinaryTreeNode?, _ result: String) -> String  {
+        if node == nil {
             return result + "nil,"
         }
         var result = result
-        result += "\(root!.value),"
-        result = Serialize(root!.left, result)
-        return Serialize(root!.right, result)
+        result += "\(node!.value),"
+        result = Serialize(node!.left, result)
+        return Serialize(node!.right, result)
     }
     
-
     /**
-     反序列化二叉树
+     中序序列，反序列化二叉树
      将序列 8,6,5,nil,nil,7,nil,nil,10,9,nil,nil,11,nil,nil, 反序列化为二叉树
             8
         6      10
      5   7    9  11
-     以上二叉树将序列化成
-     - parameters:
-     - serializedString: 序列化内容
+     - Parameters:
+        - serializedString: 序列化内容
      - Returns: 二叉树根节点
      */
     func Deserialize(_ serializedString: String) -> BinaryTreeNode? {
         let serializedString = serializedString
         return DeserializeRecursion(serializedString).node
     }
+    /**
+     反序列化二叉树
+     - Parameters:
+        - serializedString: 序列化内容
+     - Returns: node:反序列化之后的根节点 serializedString: 剩余未序列化内容
+     */
     private func DeserializeRecursion(_ serializedString: String) -> (node: BinaryTreeNode?, serializedString:String) {
         var serializedString = serializedString
-        let getFirstNodeResult = getFirstNode(serializedString)
-        serializedString = getFirstNodeResult.serializedString
+        let firstNodeResult = getFirstNode(serializedString)
+        serializedString = firstNodeResult.serializedString
         var node: BinaryTreeNode? = nil
-        if getFirstNodeResult.isNumber {
-            node = BinaryTreeNode(value: getFirstNodeResult.value, left: nil, right: nil)
+        if firstNodeResult.isNumber {
+            node = BinaryTreeNode(value: firstNodeResult.value, left: nil, right: nil)
             
             let deserializeLeftResult = DeserializeRecursion(serializedString)
             serializedString = deserializeLeftResult.serializedString
@@ -82,6 +92,12 @@ class Solution {
         }
         return (node: node, serializedString: serializedString)
     }
+    /**
+     根据序列化内容获取第一个节点值（nil或数值）
+     - Parameters:
+        - serializedString: 序列化内容
+     - Returns: isNumber:是否数字 value:值 serializedString:剩余序列化内容
+     */
     private func getFirstNode(_ serializedString: String) -> (isNumber: Bool, value: Int, serializedString: String) {
         if serializedString == "" {
             return (isNumber: false, value: -1, serializedString: serializedString)
@@ -218,11 +234,4 @@ class UnitTests: XCTestCase {
     }
 }
 
-
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

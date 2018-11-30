@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题34：二叉树中和为某一值的路径
 // 题目：输入一棵二叉树和一个整数，打印出二叉树中结点值的和为输入整数的所
 // 有路径。从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
@@ -9,6 +8,7 @@
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var left: BinaryTreeNode?
     var right: BinaryTreeNode?
@@ -25,14 +25,14 @@ class BinaryTreeNode: Equatable {
 }
 
 class Solution {
+    
     /**
      查找二叉树中和为某一值的路径
-     - parameters:
-     - root: 树根节点
-     - expectedSum: 和
-     - Returns: 所有符合条件的路径
+     - Parameters:
+        - root: 树根节点
+        - expectedSum: 期待的h和
+     - Returns: 路径上所有节点值的和为期待和的所有路径
      */
-
     func FindPath(_ root: BinaryTreeNode, expectedSum: Int) -> [[BinaryTreeNode]] {
         let allPath = FindAllPath(root)
         
@@ -40,25 +40,32 @@ class Solution {
             $0.reduce(0, { sum, node in return sum + node.value}) == expectedSum
         }
     }
+    
+    /**
+     根据二叉树根节点返回所有根节点到叶子节点的路径
+     - Parameters:
+        - root: 树根节点
+     - Returns: 所有根节点到叶子节点的路径
+     */
     private func FindAllPath(_ root: BinaryTreeNode) -> [[BinaryTreeNode]] {
         var results = [[BinaryTreeNode]]()
         var stack = [[BinaryTreeNode]]()
         stack.append([root])
         while !stack.isEmpty {
-            var nodes = stack.removeLast()
+            let nodes = stack.removeLast()
             if nodes.last!.left == nil && nodes.last!.right == nil {
                 results.append(nodes)
             }else {
                 let current = nodes.last!
                 if current.left != nil {
-                    var nodes_dupicate = nodes
-                    nodes_dupicate.append(current.left!)
-                    stack.append(nodes_dupicate)
+                    var path = nodes
+                    path.append(current.left!)
+                    stack.append(path)
                 }
                 if current.right != nil {
-                    var nodes_dupicate = nodes
-                    nodes_dupicate.append(current.right!)
-                    stack.append(nodes_dupicate)
+                    var path = nodes
+                    path.append(current.right!)
+                    stack.append(path)
                 }
             }
         }
@@ -170,9 +177,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

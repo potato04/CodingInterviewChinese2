@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题39：数组中出现次数超过一半的数字
 // 题目：数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例
 // 如输入一个长度为9的数组{1, 2, 3, 2, 2, 2, 5, 4, 2}。由于数字2在数组中
@@ -11,15 +10,22 @@ import Foundation
 import XCTest
 
 class Solution {
-    
+    /**
+     验证数组中是否出现一半以上的指定数字
+     - Parameters:
+        - nums: 数组
+        - num: 指定数字
+     - Returns: 验证结果
+     */
     private func checkMoreThanHalf(_ nums: [Int], num: Int) -> Bool {
         return nums.filter { $0 == num }.count * 2 <= nums.count ? false : true
     }
     
     /**
-     如果某个数字的次数超过数组长度一半，那么该数字必然是数组中间的那个数字（中位数）
-     - parameters:
-     - nums: 数组
+     找出数组中出现次数超过一半的数字
+     解法：将数组排序（不一定要完全排序，利用快排原理，只要找到中位数即可），如果某个数字的次数超过数组长度一半，那么该数字必然是数组中间的那个数字
+     - Parameters:
+        - nums: 数组
      - Returns: 出现次数超过数组长度一半的数字
      */
     func MoreThanHalfNum_Solution1(_ nums: [Int]) -> Int? {
@@ -44,6 +50,14 @@ class Solution {
         let median = nums[middle]
         return checkMoreThanHalf(nums, num: median) ? median : nil
     }
+    /**
+     将数组在指定范围内[start，end]分区，使得左边部分数字比右边部分的小
+     - Parameters:
+        - nums: 数组
+        - start: 分区开始索引
+        - end: 分区结束索引
+     - Returns: index：当前分区的分界索引  newNums:分区之后的新数组
+     */
     func partition (_ nums: [Int], start: Int, end: Int) -> (index: Int, newNums: [Int]) {
         if nums.count == 0 || start > end {
             return (-1, nums)
@@ -69,6 +83,14 @@ class Solution {
         nums = swap(nums, a: start, b: endIndex)
         return (endIndex, nums)
     }
+    /**
+     交换数组中的两个元素
+     - Parameters:
+        - nums: 数组
+        - a: 索引a
+        - b: 索引b
+     - Returns: 交换之后的数组
+     */
     private func swap(_ nums:[Int], a: Int, b: Int) -> [Int] {
         if nums.count == 0 || a > nums.count || b > nums.count {
             return nums
@@ -81,12 +103,13 @@ class Solution {
     }
     
     /**
-     保存数组第一个数字result和次数times
+     找出数组中出现次数超过一半的数字
+     解法：保存数组第一个数字result和次数times
      从index=1开始遍历数组，如果数字与result相同，times+1，否则times-1
      如果times=0, result保存下一个遍历数字，times重置为1
      **我们要找的数字出现的次数其他数字次数的和都多，所以要找的数字肯定是最后把次数设为1的数字**
-     - parameters:
-     - nums: 数组
+     - Parameters:
+        - nums: 数组
      - Returns: 出现次数超过数组长度一半的数字
      */
     func MoreThanHalfNum_Solution2(_ nums: [Int]) -> Int? {
@@ -107,7 +130,6 @@ class Solution {
         }
         return checkMoreThanHalf(nums, num: result) ? result : nil
     }
-
 }
 
 class UnitTests: XCTestCase {
@@ -143,11 +165,4 @@ class UnitTests: XCTestCase {
     }
 }
 
-
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

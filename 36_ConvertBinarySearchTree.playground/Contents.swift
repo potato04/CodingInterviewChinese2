@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题36：二叉搜索树与双向链表
 // 题目：输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求
 // 不能创建任何新的结点，只能调整树中结点指针的指向。
@@ -9,6 +8,7 @@
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var left: BinaryTreeNode?
     var right: BinaryTreeNode?
@@ -26,9 +26,9 @@ class BinaryTreeNode: Equatable {
 
 class Solution {
     /**
-     输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。
-     - parameters:
-     - root: 二叉搜索根节点
+     将二叉搜索树转换成一个排序的双向链表。
+     - Parameters:
+        - root: 二叉搜索树根节点
      - Returns: 双向排序链表头节点
      */
     func Convert(_ root: BinaryTreeNode) -> BinaryTreeNode? {
@@ -42,6 +42,13 @@ class Solution {
         }
         return head
     }
+    /**
+     根据二叉搜索树节点组装双向排序链表
+     - Parameters:
+        - node: 二叉搜索树节点
+        - lastNodeInList: 当前双向链表的最后节点
+     - Returns: 组装后的双向链表最后节点
+     */
     func ConvertNode(_ node: BinaryTreeNode?, _ lastNodeInList: BinaryTreeNode?) -> BinaryTreeNode? {
         guard let node = node else {
             return nil
@@ -56,8 +63,7 @@ class Solution {
             lastNodeInList?.right = current
         }
         lastNodeInList = current
-        
-        
+
         if current.right != nil {
            lastNodeInList = ConvertNode(current.right!, lastNodeInList)
         }
@@ -71,6 +77,13 @@ class UnitTests: XCTestCase {
         super.setUp()
         solution = Solution()
     }
+    /**
+     验证双向链表的值
+     - Parameters:
+        - head: 双向链表头节点
+        - values: 所有节点值数组
+     - Returns: 是否相同
+     */
     private func isLinkedListValuesEqual(_ head: BinaryTreeNode?, values:[Int]) -> Bool {
         if head == nil && values.count > 0 {
             return false
@@ -96,8 +109,6 @@ class UnitTests: XCTestCase {
         }
         return true
     }
-    
-    
     //            10
     //         /      \
     //        6        14
@@ -174,9 +185,3 @@ class UnitTests: XCTestCase {
 
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-
