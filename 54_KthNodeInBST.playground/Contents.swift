@@ -1,13 +1,13 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
-// 面试题54：二叉搜索树的第k个结点
+// 面试题54：二叉搜索树的第k大个结点
 // 题目：给定一棵二叉搜索树，请找出其中的第k大的结点。
 
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var left: BinaryTreeNode?
     var right: BinaryTreeNode?
@@ -27,7 +27,7 @@ class Solution {
     
     /**
     返回二叉搜索树中第K大的节点
-     - parameters:
+     - Parameters:
         - root: 二叉搜索树根节点
         - k：第K大
      - Returns: 第K大的节点
@@ -40,7 +40,6 @@ class Solution {
         var target: BinaryTreeNode? = nil
         var k = k
         if node.left != nil {
-            //print("left--- k: \(k), node:\(node.left!.value)")
             (target, k) = KthNode(node.left!, k: k)
         }
         if target == nil {
@@ -50,7 +49,6 @@ class Solution {
             k -= 1
         }
         if target == nil && node.right != nil {
-            //print("right--- k: \(k),node:\(node.right!.value)")
             (target, k) = KthNode(node.right!, k: k)
         }
         return (target, k)
@@ -152,10 +150,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(nil, solution.KthNode(node_1, k: 2).node)
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

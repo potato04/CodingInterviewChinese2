@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题50（二）：字符流中第一个只出现一次的字符
 // 题目：请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从
 // 字符流中只读出前两个字符"go"时，第一个只出现一次的字符是'g'。当从该字
@@ -13,8 +12,7 @@ import XCTest
 class Solution {
     
     /**
-     - parameters:
-        - string: 输入的字符串
+     返回第一个不重复的字符
      - Returns: 第一个不重复的字符
      解法：利用字典存储各个字符的出现次数
      */
@@ -59,14 +57,7 @@ class UnitTests: XCTestCase {
         //google , 第一个只出现一次的字符是 l
         solution.insert("e")
         XCTAssertEqual("l", solution.getFirstNotRepeatingChar())
-        
     }
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

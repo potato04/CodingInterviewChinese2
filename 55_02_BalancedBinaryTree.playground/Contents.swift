@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题55（二）：平衡二叉树
 // 题目：输入一棵二叉树的根结点，判断该树是不是平衡二叉树。如果某二叉树中
 // 任意结点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。
@@ -9,6 +8,7 @@
 import Foundation
 import XCTest
 
+//二叉树结构
 class BinaryTreeNode: Equatable {
     var left: BinaryTreeNode?
     var right: BinaryTreeNode?
@@ -28,7 +28,7 @@ class Solution {
     
     /**
     判断是否是平衡二叉树
-     - parameters:
+     - Parameters:
         - root: 二叉树根节点
      - Returns: 判断结果
      解法：判断各个节点的左右子树的深度相差是否超过1
@@ -43,7 +43,12 @@ class Solution {
         if diff > 1 { return false }
         return IsBalanced_Solution1(root?.left) && IsBalanced_Solution1(root?.right)
     }
-    
+    /**
+     求树的深度
+     - Parameters:
+        - root: 二叉树节点
+     - Returns: 深度
+     */
     private func TreeDepth(_ node: BinaryTreeNode?) -> Int {
         guard node != nil else {
             return 0
@@ -55,14 +60,20 @@ class Solution {
     
     /**
      判断是否是平衡二叉树
-     - parameters:
-     - root: 二叉树根节点
+     - Parameters:
+        - root: 二叉树根节点
      - Returns: 判断结果
      解法：利用后序遍历，重复利用之前的节点深度，避免重复遍历
      */
     func IsBalanced_Solution2(_ root: BinaryTreeNode?) -> Bool {
        return IsBalanced(root).balanced
     }
+    /**
+     计算二叉树的深度和深度
+     - Parameters:
+        - node: 二叉树节点
+     - Returns: balanced: 是否平衡 depth:深度
+     */
     private func IsBalanced(_ node: BinaryTreeNode?) -> (balanced: Bool, depth: Int) {
         guard node != nil else {
             return (true, 0)
@@ -193,10 +204,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(true, solution.IsBalanced_Solution2(nil))
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

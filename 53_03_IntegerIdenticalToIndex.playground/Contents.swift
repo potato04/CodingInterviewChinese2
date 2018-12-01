@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题53（三）：数组中数值和下标相等的元素
 // 题目：假设一个单调递增的数组里的每个元素都是整数并且是唯一的。请编程实
 // 现一个函数找出数组中任意一个数值等于其下标的元素。例如，在数组{-3, -1,
@@ -12,7 +11,8 @@ import XCTest
 
 class Solution {
     /**
-     - parameters:
+     查找数组中数值和下标相等的元素
+     - Parameters:
         - data: 递增数组
      - Returns: 数值与下标相等的元素
      解法：二分法，如果当前下标的元素值比下标大，则右边部分元素的值都比各自的下标大，继续查找左边。
@@ -45,7 +45,6 @@ class UnitTests: XCTestCase {
         super.setUp()
         solution = Solution()
     }
-    //
     func testCase1() {
         let data = [-3,-1,1,3,5]
         XCTAssertEqual(3, solution.GetNumberSameAsIndex(in: data))
@@ -76,10 +75,5 @@ class UnitTests: XCTestCase {
     }
     
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

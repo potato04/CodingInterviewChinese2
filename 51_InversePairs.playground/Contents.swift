@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题51：数组中的逆序对
 // 题目：在数组中的两个数字如果前面一个数字大于后面的数字，则这两个数字组
 // 成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。
@@ -12,9 +11,10 @@ import XCTest
 class Solution {
     
     /**
-     - parameters:
+     求数组中的逆序对
+     - Parameters:
         - data: 输入的数组
-     - Returns: 逆序对的个数
+     - Returns: pairCount:逆序对的个数 merged 合并后的数组
      解法：利用归并排序算法，left 和 right 部分分别从尾到头进行合并，如果当前合并 left > right，则逆序对的数量记上 right 部分未合并项的数量
      */
     func InversePairs<T: Comparable>(_ data: [T]) -> (pairCount:Int, merged:[T]) {
@@ -25,6 +25,13 @@ class Solution {
         let mergedResult = InversePairsCore(leftResult.merged, rightResult.merged)
         return (leftResult.pairCount + rightResult.pairCount + mergedResult.pairCount, mergedResult.merged)
     }
+    /**
+     合并左右两个数组，并排序
+     - Parameters:
+        - leftPile: 左数组
+        - rightPile: 右数组
+     - Returns: pairCount:逆序对的个数 merged 合并后的数组
+     */
     func InversePairsCore<T: Comparable>(_ leftPile: [T], _ rightPile:[T]) -> (pairCount:Int, merged:[T]) {
         var leftIndex = leftPile.endIndex - 1
         var rightIndex = rightPile.endIndex - 1
@@ -95,10 +102,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(3, solution.InversePairs(data).pairCount)
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

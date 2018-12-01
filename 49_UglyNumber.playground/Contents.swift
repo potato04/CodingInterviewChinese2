@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题49：丑数
 // 题目：我们把只包含因子2、3和5的数称作丑数（Ugly Number）。求按从小到
 // 大的顺序的第1500个丑数。例如6、8都是丑数，但14不是，因为它包含因子7。
@@ -13,9 +12,10 @@ import XCTest
 class Solution {
     
     /**
-     - parameters:
+     计算丑数
+     - Parameters:
         - index: 返回第index个丑数
-     - Returns: 丑数，
+     - Returns: 丑数
      解法：从0开始遍历判断是否丑数，直到计算到index个
      */
     func getUglyNumber_Solution1(_ index: Int) -> Int {
@@ -32,6 +32,12 @@ class Solution {
         }
         return number
     }
+    /**
+     判断是否是丑数
+     - Parameters:
+        - number: 数字
+     - Returns: 判断结果
+     */
     private func isUglyNumber(_ number: Int) -> Bool {
         var number = number
         while number % 2 == 0 {
@@ -47,17 +53,18 @@ class Solution {
     }
     
     /**
-     - parameters:
-     - index: 返回第index个丑数
-     - Returns: 丑数，
-     解法：从0开始遍历判断是否丑数，直到计算到index个
+     计算丑数
+     - Parameters:
+        - index: 返回第index个丑数
+     - Returns: 丑数
+     解法：根据已知的丑数，*2、*3、*5等方式计算下一个丑数
      */
     func getUglyNumber_Solution2(_ index: Int) -> Int {
         guard index > 0 else {
             return 0
         }
         var uglyNumbers = [Int]()
-        uglyNumbers.append(1) //first ugly number
+        uglyNumbers.append(1) //第一个丑数是1
         var nextUglyIndex = 1
         var multiply2Index = 0, multiply3Index = 0, multiply5Index = 0
         while nextUglyIndex < index {
@@ -99,10 +106,7 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(10, solution.getUglyNumber_Solution1(9))
         XCTAssertEqual(12, solution.getUglyNumber_Solution1(10))
         XCTAssertEqual(15, solution.getUglyNumber_Solution1(11))
-        /*
-         太tm耗时了
-        XCTAssertEqual(859963392, solution.getUglyNumber_Solution1(1500))
-        */
+        //XCTAssertEqual(859963392, solution.getUglyNumber_Solution1(1500)) //太tm耗时了
     }
     func testCase2() {
         XCTAssertEqual(1, solution.getUglyNumber_Solution2(1))
@@ -121,9 +125,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题53（一）：数字在排序数组中出现的次数
 // 题目：统计一个数字在排序数组中出现的次数。例如输入排序数组{1, 2, 3, 3,
 // 3, 3, 4, 5}和数字3，由于3在这个数组中出现了4次，因此输出4。
@@ -11,7 +10,8 @@ import XCTest
 
 class Solution {
     /**
-     - parameters:
+     统计数字在排序数组中出现的次数
+     - Parameters:
         - data: 排序数组
         - k：查找的数字
      - Returns: 在数组中出现的次数
@@ -29,7 +29,8 @@ class Solution {
         return 0
     }
     /**
-     - parameters:
+     查找排序数组[startIndex,endIndex]范围内第一次出现数字k的位置
+     - Parameters:
         - data: 排序数组
         - k：查找的数字
         - startIndex：开始查找的位置
@@ -59,11 +60,12 @@ class Solution {
         return GetFirstK(in: data, k: k, from: startIndex, to: endIndex)
     }
     /**
-     - parameters:
-     - data: 排序数组
-     - k：查找的数字
-     - startIndex：开始查找的位置
-     - endIndex: 结束查找的位置
+     查找排序数组[startIndex,endIndex]范围内最后一次出现数字k的位置
+     - Parameters:
+        - data: 排序数组
+        - k：查找的数字
+        - startIndex：开始查找的位置
+        - endIndex: 结束查找的位置
      - Returns: 在数组中最后一次出现的位置（没有返回-1）
      */
     private func GetLastK(in data: [Int], k: Int, from startIndex:  Int, to endIndex: Int) -> Int {
@@ -148,10 +150,5 @@ class UnitTests: XCTestCase {
     }
     
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

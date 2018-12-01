@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题52：两个链表的第一个公共结点
 // 题目：输入两个链表，找出它们的第一个公共结点。
 
@@ -10,11 +9,13 @@ import XCTest
 
 class Solution {
     /**
-     - parameters:
+     查找两个链表的第一个公共节点
+     - Parameters:
         - node1: 链表1
         - node2: 链表2
      - Returns: 第一个公共节点
-     解法：
+     解法：分别求两链表的长度计算出长度差d,
+          让长链表先走d个节点, 然后跟短链表一起遍历每个节点，相同的那个节点便是公共节点
      */
     func FindFirstCommonNode(_ node1: ListNode?, _ node2: ListNode?) -> ListNode? {
         let node1Length = GetListLength(node1)
@@ -32,6 +33,13 @@ class Solution {
         }
         return headLong
     }
+    /**
+     获取链表的长度
+     - Parameters:
+        - node: 链表头
+     - Returns: 长度
+     解法：
+     */
     private func GetListLength(_ node: ListNode?) -> Int {
         var count = 0
         var head = node
@@ -116,10 +124,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(nil, solution.FindFirstCommonNode(node1, nil)?.value)
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

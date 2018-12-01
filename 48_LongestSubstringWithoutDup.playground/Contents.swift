@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题48：最长不含重复字符的子字符串
 // 题目：请从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子
 // 字符串的长度。假设字符串中只包含从'a'到'z'的字符。
@@ -12,9 +11,10 @@ import XCTest
 class Solution {
     
     /**
-     - parameters:
+     求最长不含重复字符的子字符串
+     - Parameters:
         - str: 字符串
-     - Returns: 最长的不包含重复字符的子字符串
+     - Returns: 最长的不包含重复字符的子字符串长度
      解法：穷举法，验证所有的子字符串
      */
     func longestSubstringWithoutDuplication_1(_ str: String) -> Int {
@@ -33,6 +33,12 @@ class Solution {
         }
         return longest
     }
+    /**
+     判断字符串中是否包含重复字符
+     - Parameters:
+        - substring: 字符串
+     - Returns: 判断结果
+     */
     private func hasDuplication(_ substring: String) -> Bool {
         let chars = Array(substring)
         var result = [Character]()
@@ -47,10 +53,11 @@ class Solution {
     }
     
     /**
-     - parameters:
-     - str: 字符串
-     - Returns: 最长的不包含重复字符的子字符串
-     解法：穷举法，验证所有的子字符串
+     求最长不含重复字符的子字符串
+     - Parameters:
+        - str: 字符串
+     - Returns: 最长的不包含重复字符的子字符串长度
+     解法：动态规划
      */
     func longestSubstringWithoutDuplication_2(_ str: String) -> Int {
         var curLength = 0
@@ -124,9 +131,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

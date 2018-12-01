@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题53（二）：0到n-1中缺失的数字
 // 题目：一个长度为n-1的递增排序数组中的所有数字都是唯一的，并且每个数字
 // 都在范围0到n-1之内。在范围0到n-1的n个数字中有且只有一个数字不在该数组
@@ -12,7 +11,8 @@ import XCTest
 
 class Solution {
     /**
-     - parameters:
+     查找递增排序数组中缺失的那个数字
+     - Parameters:
         - data: 递增数组
      - Returns: 缺失那个数字
      解法：利用二分法查找，如果index和数据项相同，说明在右边部分，否则在左边部分
@@ -83,10 +83,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(nil, solution.GetMissingNumber(in: data))
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

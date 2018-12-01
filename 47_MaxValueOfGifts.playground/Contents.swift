@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题47：礼物的最大价值
 // 题目：在一个m×n的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值
 // （价值大于0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向左或
@@ -14,7 +13,8 @@ import XCTest
 class Solution {
     
     /**
-     - parameters:
+     求礼物的最大价值
+     - Parameters:
         - gifts: 礼物的矩阵
      - Returns: 最大值
      解法：从数字的右边往左边进行递归计算，消除重复计算的问题
@@ -41,10 +41,12 @@ class Solution {
     }
     
     /**
-     - parameters:
-     - gifts: 礼物的矩阵
+     求礼物的最大价值
+     - Parameters:
+        - gifts: 礼物的矩阵
      - Returns: 最大值
      解法：从数字的右边往左边进行递归计算，消除重复计算的问题
+     与解法1的区别是中间结果只需要一维数组即可
      */
     func getMaxValue_solution2(_ matrix: [[Int]]) -> Int {
         if matrix.count == 0 { return 0 }
@@ -103,9 +105,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-
