@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题45：把数组排成最小的数
 // 题目：输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼
 // 接出的所有数字中最小的一个。例如输入数组{3, 32, 321}，则打印出这3个数
@@ -13,9 +12,9 @@ import XCTest
 class Solution {
     
     /**
-     根据输入数组，返回能排成的最小数字
-     - parameters:
-     - nums: 数组
+     根据输入数组，返回数组里所有数字拼接起来能排成的最小数字
+     - Parameters:
+        - nums: 数组
      - Returns: 最小的数字
      */
     func PrintMinNumber(_ nums: [Int]) -> Int? {
@@ -43,7 +42,7 @@ class UnitTests: XCTestCase {
         super.setUp()
         solution = Solution()
     }
-    
+
     func testCase1() {
         XCTAssertEqual(12345, solution.PrintMinNumber([3,5,1,4,2]))
         XCTAssertEqual(321323, solution.PrintMinNumber([3,32,321]))
@@ -54,9 +53,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

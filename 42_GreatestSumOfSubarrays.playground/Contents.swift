@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题42：连续子数组的最大和
 // 题目：输入一个整型数组，数组里有正数也有负数。数组中一个或连续的多个整
 // 数组成一个子数组。求所有子数组的和的最大值。要求时间复杂度为O(n)。
@@ -12,9 +11,10 @@ import XCTest
 class Solution {
     
     /**
-     - parameters:
+     连续子数组的最大和
+     - Parameters:
         - nums: n个数的数组
-     - Returns: 连续子数组的最大和
+     - Returns: 最大和
      */
     func FindGreatestSumOfSubArray(_ nums: [Int]) -> Int {
         if nums.count == 0 { return 0 }
@@ -55,11 +55,4 @@ class UnitTests: XCTestCase {
     }
 }
 
-
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-
