@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题57（一）：和为s的两个数字
 // 题目：输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们
 // 的和正好是s。如果有多对数字的和等于s，输出任意一对即可。
@@ -12,11 +11,11 @@ import XCTest
 class Solution {
     
     /**
-    返回递增排序数组中和为s的两个数字
-     - parameters:
+    返回递增排序数组nums中和为sum的两个数字
+     - Parameters:
         - nums: 数组
         - sum: 和
-     - Returns: 和为s的两个数字
+     - Returns: 和为sum的两个数字
      */
     func FindNumbersWithSum(_ nums: [Int], _ sum: Int) -> (num1: Int?, num2: Int?) {
         guard nums.count > 2 else {
@@ -53,7 +52,6 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(4, result.num1)
         XCTAssertEqual(11, result.num2)
     }
-    
     // 存在和为s的两个数字，这两个数字位于数组的两段
     func testCase2() {
         let nums = [1,2,4,7,11,16]
@@ -69,10 +67,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(nil, result.num2)
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

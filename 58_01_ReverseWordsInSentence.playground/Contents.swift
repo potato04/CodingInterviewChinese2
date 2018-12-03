@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题58（一）：翻转单词顺序
 // 题目：输入一个英文句子，翻转句子中单词的顺序，但单词内字符的顺序不变。
 // 为简单起见，标点符号和普通字母一样处理。例如输入字符串"I am a student. "，
@@ -14,16 +13,17 @@ import XCTest
 class Solution {
     
     /**
-     - parameters:
-        - data: 翻转前的句子
+     翻转单词顺序
+     - Parameters:
+        - sentence: 翻转前的句子
      - Returns: 翻转之后的句子
      */
-    func ReverseSentence(_ data: String) -> String {
-        var data:[Character] = Array(data)
-        data.reverse()
-        let words = data.split(separator: " ")
+    func ReverseSentence(_ sentence: String) -> String {
+        var chars:[Character] = Array(sentence)
+        chars.reverse()
+        let words = chars.split(separator: " ")
         guard words.count > 0 else {
-            return String(data)
+            return String(chars)
         }
         var reversed = words.reduce("") {
             $0 + $1.reversed() + " "
@@ -68,10 +68,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(data, solution.ReverseSentence(data))
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题56（一）：数组中只出现一次的两个数字
 // 题目：一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序
 // 找出这两个只出现一次的数字。要求时间复杂度是O(n)，空间复杂度是O(1)。
@@ -12,8 +11,8 @@ import XCTest
 class Solution {
     
     /**
-    返回数组中只出现一次的两个数字
-     - parameters:
+    返回数组中只出现一次的两个数字(其他数字都出现了两次)
+     - Parameters:
         - nums: 数组
      - Returns: 两个数字
      */
@@ -37,9 +36,9 @@ class Solution {
     }
     /**
      查找从右边数起第一个是1的位
-     - parameters:
-     - num: 数字
-     - index: 第index位（从右开始）
+     - Parameters:
+        - num: 数字
+        - index: 第index位（从右开始）
      - Returns: 判断结果
      */
     private func FindFirstBitIs1(_ num: Int) -> Int{
@@ -53,7 +52,7 @@ class Solution {
     }
     /**
      判断数字的第index位是不是1
-     - parameters:
+     - Parameters:
         - num: 数字
         - index: 第index位（从右开始）
      - Returns: 判断结果
@@ -90,10 +89,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(6, solution.FindNumsAppearOnce(nums).num2)
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

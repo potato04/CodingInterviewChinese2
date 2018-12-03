@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题59（一）：滑动窗口的最大值
 // 题目：给定一个数组和滑动窗口的大小，请找出所有滑动窗口里的最大值。例如，
 // 如果输入数组{2, 3, 4, 2, 6, 2, 5, 1}及滑动窗口的大小3，那么一共存在6个
@@ -14,7 +13,8 @@ import XCTest
 class Solution {
     
     /**
-     - parameters:
+     滑动窗口的最大值
+     - Parameters:
         - nums:数组
         - size: 滑动窗口大小
      - Returns: 所有滑动窗口里的最大值
@@ -102,10 +102,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(expected, solution.maxInWindows(nums, 5))
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

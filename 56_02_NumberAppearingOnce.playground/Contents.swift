@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题56（二）：数组中唯一只出现一次的数字
 // 题目：在一个数组中除了一个数字只出现一次之外，其他数字都出现了三次。请
 // 找出那个出现一次的数字。
@@ -13,7 +12,7 @@ class Solution {
     
     /**
     返回数组中只出现一次的数字
-     - parameters:
+     - Parameters:
         - nums: 数组
      - Returns: 出现一次的数字
      */
@@ -30,7 +29,6 @@ class Solution {
                 bitMask = bitMask << 1
             }
         }
-        //print(bitSum)
         var result = 0
         for i in stride(from: Int.bitWidth - 1, through: 0, by: -1) {
             result = result << 1
@@ -84,10 +82,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(3467, solution.FindNumberAppearingOnce(nums))
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

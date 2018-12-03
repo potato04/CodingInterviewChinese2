@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题59（二）：队列的最大值
 // 题目：定义一个队列，并实现函数 max 得到队列里的最大值
 // 要求函数 max、push、pop的时间复杂度都是 O(1)
@@ -14,7 +13,11 @@ class Solution {
     private var maximums = [(value: Int, index: Int)]()
     private var data = [(value: Int, index: Int)]()
     private var currentIndex = 0
-    
+    /**
+     入队
+     - Parameters:
+        - nums: 数字
+     */
     public func push(_ num: Int) {
         while maximums.count > 0 && num >= maximums.last!.value {
             maximums.removeLast()
@@ -23,15 +26,23 @@ class Solution {
         maximums.append((num, currentIndex))
         currentIndex += 1
     }
-    public func pop() {
+    /**
+     出队
+     - Returns: 移除队列的数字
+     */
+    public func pop() -> Int? {
         guard data.count > 0 else {
-            return
+            return nil
         }
         if maximums.first!.index == data.first!.index {
             maximums.removeFirst()
         }
-        data.removeFirst()
+        return data.removeFirst().value
     }
+    /**
+     获取当前队列最大值
+     - Returns: 当前队列d最大值
+     */
     public func max() -> Int? {
         guard maximums.count > 0 else {
             return nil
@@ -106,10 +117,5 @@ class UnitTests: XCTestCase {
         
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-
