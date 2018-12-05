@@ -1,21 +1,20 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题65：不用加减乘除做加法
 // 题目：写一个函数，求两个整数之和，要求在函数体内不得使用＋、－、×、÷
 // 四则运算符号。
-
 import Foundation
 import XCTest
 
-
 class Solution1 {
     /*
-     - parameters:
+     不适用加减乘除做加法
+     - Parameters:
         - num1: 数字1
         - num2: 数字2
      - Returns: 两数之和
+     解法：num1^num2 = num1+num2（不考虑进位）， (num1 & num2) << 1  = 进位
      */
     func sum(num1:Int, with num2:Int) -> Int {
         var num1 = num1
@@ -46,9 +45,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

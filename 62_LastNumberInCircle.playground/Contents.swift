@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题62：圆圈中最后剩下的数字
 // 题目：0, 1, …, n-1这n个数字排成一个圆圈，从数字0开始每次从这个圆圈里
 // 删除第m个数字。求出这个圆圈里剩下的最后一个数字。
@@ -11,12 +10,12 @@ import XCTest
 
 class Solution {
     /**
-     - parameters:
+     获取圆圈中最后剩下的数字
+     - Parameters:
         - n:表示圆圈中的数字为 1...n-1
         - m:表示每次删除第m个数字
      - Returns: 最后一个数字
      */
-
     func LastRemaining_Solution1(n: Int,  m: Int) -> Int? {
         guard n > 0 && m > 0 else {
             return nil
@@ -41,16 +40,13 @@ class Solution {
         return nums.first!
     }
     
-    
-    
-    
     /**
-     - parameters:
-     - n:表示圆圈中的数字为 1...n-1
-     - m:表示每次删除第m个数字
+     获取圆圈中最后剩下的数字
+     - Parameters:
+        - n:表示圆圈中的数字为 1...n-1
+        - m:表示每次删除第m个数字
      - Returns: 最后一个数字
      */
-    
     func LastRemaining_Solution2(n: Int,  m: Int) -> Int? {
         guard n > 0 && m > 0 else {
             return nil
@@ -96,10 +92,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(1027, solution.LastRemaining_Solution2(n: 4000, m: 997))
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

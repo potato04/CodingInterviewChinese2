@@ -1,20 +1,20 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题66：构建乘积数组
 // 题目：给定一个数组A[0, 1, …, n-1]，请构建一个数组B[0, 1, …, n-1]，其
 // 中B中的元素B[i] =A[0]×A[1]×… ×A[i-1]×A[i+1]×…×A[n-1]。不能使用除法。
-
 import Foundation
 import XCTest
 
-
 class Solution1 {
     
-     ///- Parameters:
-     ///   - nums: 数组A
-     ///- Returns: 乘积结果 数组B
+    /*
+     构建乘积数组
+     - Parameters:
+        - nums: 数组A
+     - Returns: 乘积结果 数组B
+     */
     func BuildProductionArray(nums:[Int]) -> [Int] {
         guard nums.count > 0 else {
             return [Int]()
@@ -61,9 +61,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

@@ -1,7 +1,6 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题63：股票的最大利润
 // 题目：假设把某股票的价格按照时间先后顺序存储在数组中，请问买卖交易该股
 // 票可能获得的利润是多少？例如一只股票在某些时间节点的价格为{9, 11, 8, 5,
@@ -13,11 +12,11 @@ import XCTest
 
 class Solution {
     /**
-     - parameters:
+     获取股票的最大利润
+     - Parameters:
         - nums：股票价格数组
      - Returns: 最大利益
      */
-
     func MaxDiff(_ nums:[Int]) -> Int? {
         guard nums.count > 1 else {
             //必须有2个或以上价格
@@ -65,7 +64,6 @@ class UnitTests: XCTestCase {
         let nums = [16,16,16,16,16]
         XCTAssertEqual(0, solution.MaxDiff(nums))
     }
-    //
     func testCase5() {
         let nums = [9,11,5,7,16,1,4,2]
         XCTAssertEqual(11, solution.MaxDiff(nums))
@@ -83,10 +81,5 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(nil, solution.MaxDiff(nums))
     }
 }
+
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-

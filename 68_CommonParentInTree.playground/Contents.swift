@@ -1,13 +1,13 @@
 //==================================================================
 // 《剑指Offer——名企面试官精讲典型编程题》代码
 //==================================================================
-
 // 面试题68：树中两个结点的最低公共祖先
 // 题目：输入两个树结点，求它们的最低公共祖先。
 
 import Foundation
 import XCTest
 
+//树结构
 class TreeNode: Equatable {
     var children: [TreeNode]
     var value: Int
@@ -22,20 +22,27 @@ class TreeNode: Equatable {
 }
 
 class Solution1 {
-    /// 查找树中两个结点的最低公共祖先
-    ///  - Parameters:
-    ///    - root: 树的根节点
-    ///    - node1: 节点1
-    ///    - node2: 节点2
-    ///  - Returns: 公共祖先
-    ///
+    /*
+     查找树中两个结点的最低公共祖先
+     - Parameters:
+        - root: 树的根节点
+        - node1: 节点1
+        - node2: 节点2
+     - Returns: 查找到的公共祖先
+     */
     func GetLastCommonParent(root: TreeNode, node1: TreeNode, node2: TreeNode) -> TreeNode? {
         var path1 = [TreeNode](), path2 = [TreeNode]()
         GetNodePath(root: root, node: node1, path: &path1)
         GetNodePath(root: root, node: node2, path: &path2)
         return GetLastCommonNode(path1: path1, path2: path2)
     }
-    /// 返回从node到root所有节点
+    /*
+     返回从node到root所有节点
+     - Parameters:
+        - root: 树的根节点
+        - node: 节点
+     - Returns: 是否找到
+     */
     func GetNodePath(root: TreeNode, node: TreeNode,  path: inout [TreeNode]) -> Bool {
         if root == node {
             return true
@@ -53,12 +60,20 @@ class Solution1 {
         }
         return found
     }
-    /// 返回两条路径中最后公共节点
+    /*
+     根据两条路径查找最后公共祖先，两条路径都是从根节点在前
+     - Parameters:
+        - path1: 路径1
+        - path2: 路径2
+     - Returns: 查找最后公共祖先
+     */
     func GetLastCommonNode(path1: [TreeNode], path2: [TreeNode]) -> TreeNode? {
         var commonNode: TreeNode? = nil
         for i in stride(from: 0, to: path1.count, by: 1) {
             if i < path2.count && path1[i] == path2[i] {
                 commonNode = path1[i]
+            } else {
+                return commonNode
             }
         }
         return commonNode
@@ -132,9 +147,3 @@ class UnitTests: XCTestCase {
 }
 
 UnitTests.defaultTestSuite.run()
-
-
-
-
-
-
