@@ -9,12 +9,12 @@ import XCTest
 
 class Solution1 {
     /*
-     不适用加减乘除做加法
+     不使用加减乘除做加法
      - Parameters:
         - num1: 数字1
         - num2: 数字2
      - Returns: 两数之和
-     解法：num1^num2 = num1+num2（不考虑进位）， (num1 & num2) << 1  = 进位
+     解法：num1^num2 = num1+num2（不考虑进位），进位计算： (num1 & num2) << 1  
      */
     func sum(num1:Int, with num2:Int) -> Int {
         var num1 = num1
