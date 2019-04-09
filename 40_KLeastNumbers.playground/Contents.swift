@@ -25,17 +25,17 @@ class Solution {
         }
         var start = 0
         var end = nums.count - 1
-        var index = 0
         
-        (index, nums) = partition(nums, start: start, end: end)
-        
-        while index != k - 1 {
-            if index > k - 1 {
-                end = index - 1
+        var p = partition(&nums, start: start, end: end)
+       
+        while p != k - 1 {
+            if p > k - 1 {
+                end = p - 1
             } else {
-                start = index + 1
+                start = p + 1
             }
-            (index, nums) = partition(nums, start: start, end: end)
+            p = partition(&nums, start: start, end: end)
+           
         }
         return Array(nums[..<k])
     }
@@ -47,52 +47,31 @@ class Solution {
         - end: 分区结束索引
      - Returns: index：当前分区的分界索引  newNums:分区之后的新数组
      */
-    func partition (_ nums: [Int], start: Int, end: Int) -> (index: Int, newNums: [Int]) {
-        if nums.count == 0 || start > end || end > nums.count {
-            return (-1, nums)
+    func partition (_ nums: inout [Int], start: Int, end: Int) -> Int {
+        if nums.count == 0 || start >= end {
+            return start
         }
-        if start == nums.count - 1{
-            return (start, nums)
-        }
-        var nums = nums
-        var startIndex = start
-        var endIndex = end
+        
         let pivot = nums[start]
-        startIndex += 1
+        var lo = start + 1
+        var hi = end
+
         while true {
-            while nums[startIndex] <= pivot && startIndex < end {
-                startIndex += 1
+            while nums[lo] <= pivot && lo < end {
+                lo += 1
             }
-            while nums[endIndex] >= pivot && endIndex > start {
-                endIndex -= 1
+            while nums[hi] > pivot {
+                hi -= 1
             }
-            if endIndex > startIndex {
-                nums = swap(nums, a: startIndex, b: endIndex)
+            if lo < hi {
+                (nums[lo], nums[hi]) = (nums[hi], nums[lo])
             } else {
-                break
+                (nums[start], nums[hi]) = (nums[hi], nums[start])
+                return hi
             }
         }
-        nums = swap(nums, a: start, b: endIndex)
-        return (endIndex, nums)
     }
-    /**
-     交换数组中的两个元素
-     - Parameters:
-        - nums: 数组
-        - a: 索引a
-        - b: 索引b
-     - Returns: 交换之后的数组
-     */
-    private func swap(_ nums:[Int], a: Int, b: Int) -> [Int] {
-        if nums.count == 0 || a > nums.count || b > nums.count {
-            return nums
-        }
-        var nums = nums
-        let temp = nums[a]
-        nums[a] = nums[b]
-        nums[b] = temp
-        return nums
-    }
+
     /**
      输入n个整数，找出其中最小的k个数。
      解法：遍历数组，使用一个最大堆保存最小的k个数（不改变数组，不用一次性全部加载数据，所以适合大数据处理）

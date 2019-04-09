@@ -34,74 +34,54 @@ class Solution {
         }
         var nums = nums
         let middle = nums.count / 2
+        
         var start = 0
         var end = nums.count - 1
-        var index:Int
-        (index, nums) = partition(nums, start: start, end: end)
-        while index != middle {
-            if index > middle {
-                end = index - 1
-                (index, nums) = partition(nums, start: start, end: end)
+        
+        var p = partition(&nums, start: start, end: end)
+        while p != middle {
+            if p > middle {
+                end = p - 1
             } else {
-                start = index + 1
-                (index, nums) = partition(nums, start: start, end: end)
+                start = p + 1
             }
+             p = partition(&nums, start: start, end: end)
         }
         let median = nums[middle]
         return checkMoreThanHalf(nums, num: median) ? median : nil
     }
+    
     /**
      将数组在指定范围内[start，end]分区，使得左边部分数字比右边部分的小
      - Parameters:
         - nums: 数组
         - start: 分区开始索引
         - end: 分区结束索引
-     - Returns: index：当前分区的分界索引  newNums:分区之后的新数组
+     - Returns: index：当前分区的分界索引
      */
-    func partition (_ nums: [Int], start: Int, end: Int) -> (index: Int, newNums: [Int]) {
+    func partition (_ nums: inout [Int], start: Int, end: Int) -> Int {
         if nums.count == 0 || start > end {
-            return (-1, nums)
+            return start
         }
-        var nums = nums
-        var startIndex = start
-        var endIndex = end
         let pivot = nums[start]
-        startIndex += 1
+        var lo = start + 1
+        var hi = end
+        
         while true {
-            while nums[startIndex] <= pivot && startIndex <= endIndex {
-                startIndex += 1
+            while nums[lo] <= pivot && lo < end {
+                lo += 1
             }
-            while nums[endIndex] >= pivot && endIndex >= startIndex {
-                endIndex -= 1
+            while nums[hi] > pivot {
+                hi -= 1
             }
-            if endIndex > startIndex {
-                nums = swap(nums, a: startIndex, b: endIndex)
+            if lo < hi {
+                (nums[lo], nums[hi]) = (nums[hi], nums[lo])
             } else {
-                break
+                (nums[start], nums[hi]) = (nums[hi], nums[start])
+                return hi
             }
         }
-        nums = swap(nums, a: start, b: endIndex)
-        return (endIndex, nums)
     }
-    /**
-     交换数组中的两个元素
-     - Parameters:
-        - nums: 数组
-        - a: 索引a
-        - b: 索引b
-     - Returns: 交换之后的数组
-     */
-    private func swap(_ nums:[Int], a: Int, b: Int) -> [Int] {
-        if nums.count == 0 || a > nums.count || b > nums.count {
-            return nums
-        }
-        var nums = nums
-        let temp = nums[a]
-        nums[a] = nums[b]
-        nums[b] = temp
-        return nums
-    }
-    
     /**
      找出数组中出现次数超过一半的数字
      解法：保存数组第一个数字result和次数times
