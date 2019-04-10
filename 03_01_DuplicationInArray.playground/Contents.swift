@@ -23,9 +23,7 @@ class Solution {
                 if nums[index] == nums[nums[index]] {
                     return (index, nums[index])
                 }
-                let temp = nums[index]
-                nums[index] = nums[temp]
-                nums[temp] = temp
+                (nums[index], nums[nums[index]]) = (nums[nums[index]], nums[index])
             }
         }
         return nil

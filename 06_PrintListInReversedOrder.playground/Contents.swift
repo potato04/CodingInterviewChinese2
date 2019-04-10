@@ -26,16 +26,14 @@ class Solution {
         - listnode: 头结点
      - Returns:
      */
-    func printListNode(_ node: ListNode){
-        var nodes = [ListNode]()
+    func reverseListNode(_ node: ListNode) -> [Int] {
+        var nodes = [Int]()
         var currentNode:ListNode? = node
         while currentNode != nil {
-            nodes.append(currentNode!)
+            nodes.append(currentNode!.value)
             currentNode = currentNode!.next
         }
-        for node in nodes.reversed() {
-            print(node.value)
-        }
+        return nodes.reversed()
     }
 }
 
@@ -53,15 +51,14 @@ class UnitTests: XCTestCase {
         let node3 = ListNode(value: 3, next: node4)
         let node2 = ListNode(value: 2, next: node3)
         let node1 = ListNode(value: 1, next: node2)
-        solution.printListNode(node1)
+        XCTAssertEqual(solution.reverseListNode(node1), [5,4,3,2,1])
     }
 
     ///只有一个节点 1
     func testCase2() {
         let node1 = ListNode(value: 1, next: nil)
-        solution.printListNode(node1)
+        XCTAssertEqual(solution.reverseListNode(node1), [1])
     }
-    
 }
 
 UnitTests.defaultTestSuite.run()

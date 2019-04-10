@@ -18,43 +18,27 @@ class Solution {
      - Returns: 重复的整数
      */
     func duplicate(_ nums: [Int]) -> Int? {
-        var start = 1
-        var end = nums.count - 1
-        while start <= end {
-            let middle = (end - start) / 2 + start
-            let count = countAtRange(nums, min: start, max: middle)
-            if start == end {
-                if count > 1 {
-                    return start
+        // 所有数字都在1到 nums.count-1 大小范围内， min 和 max 表示这个范围
+        var min = 1
+        var max = nums.count - 1
+        while min <= max {
+            let middle = (max - min) / 2 + min
+            let countAtRange = nums.filter { $0 >= min && $0 <= middle }.count
+            if min == max {
+                if countAtRange > 1 {
+                    return min
                 } else {
                     break
                 }
             }
-            let expectCount = middle - start + 1
-            if count > expectCount {
-                end = middle
+            let expectCount = middle - min + 1
+            if countAtRange > expectCount {
+                max = middle
             } else {
-                start = middle + 1
+                min = middle + 1
             }
         }
         return nil
-    }
-    /**
-     统计数组nums元素大小在[min,max]范围内的个数
-     - Parameters:
-        - nums: 数组
-        - min: 最小值
-        - max: 最大值
-     - Returns: 重复的整数
-     */
-    func countAtRange(_ nums:[Int], min: Int, max: Int) -> Int{
-        var count = 0
-        for num in nums {
-            if num >= min && num <= max {
-                count += 1
-            }
-        }
-        return count
     }
 }
 

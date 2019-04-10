@@ -12,19 +12,20 @@ import XCTest
 class Solution {
     /**
      判断二维数组中是否含有该整数P
+     从二维数组的右上角开始查找
      - Parameters:
         - matrix: 二维数组
         - num: 查找的整数
      - Returns: 是否包含
      */
     func find(_ matrix: [[Int]], num: Int) -> Bool {
-        var top = 0
-        var right = matrix.count - 1
-        while top <= matrix[0].count - 1 && right >= 0 {
-            if matrix[top][right] > num {
-                right -= 1
-            } else if matrix[top][right] < num {
-                top += 1
+        var y = 0
+        var x = matrix.count - 1
+        while y <= matrix[0].count - 1 && x >= 0 {
+            if matrix[y][x] > num {
+                x -= 1
+            } else if matrix[y][x] < num {
+                y += 1
             } else {
                 return true
             }
