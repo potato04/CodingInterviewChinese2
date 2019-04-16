@@ -19,6 +19,8 @@ class Solution {
      - Returns: 是否包含
      */
     func find(_ matrix: [[Int]], num: Int) -> Bool {
+        // y 表示二维数组的列数， x 表示二维数组的行数 索引均从 0 开始
+        // 查找方法从二维数组的右上角开始比较
         var y = 0
         var x = matrix.count - 1
         while y <= matrix[0].count - 1 && x >= 0 {

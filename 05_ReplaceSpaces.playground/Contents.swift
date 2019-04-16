@@ -19,6 +19,7 @@ class Solution {
      - Returns: 替换之后的字符数组
      */
     func replace(_ charArray: [Character]) -> [Character] {
+        /// TODO
         return charArray
     }
 }
