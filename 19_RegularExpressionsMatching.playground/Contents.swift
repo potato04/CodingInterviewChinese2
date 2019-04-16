@@ -18,7 +18,7 @@ class Solution {
         - pattern: 模式
      - Returns: 是否匹配
      */
-    func match(str: String,pattern: String) -> Bool {
+    func match(str: String, pattern: String) -> Bool {
         return matchCore(str: Array(str), strIndex: 0, pattern: Array(pattern), patternIndex: 0)
     }
     /**

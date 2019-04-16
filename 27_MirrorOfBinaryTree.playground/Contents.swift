@@ -40,11 +40,9 @@ class Solution {
         guard node.left != nil || node.right != nil else {
             return
         }
-        
+    
         //exchange left node and right node
-        let temp = node.left
-        node.left = node.right
-        node.right = temp
+        (node.left, node.right) = (node.right, node.left)
         
         if node.left != nil {
             MirrorRecursively(node.left)
@@ -64,13 +62,13 @@ class Solution {
         guard let node = node else {
             return
         }
+        //把 nodes 当作栈使用
         var nodes = Array<BinaryTreeNode>()
         nodes.append(node)
         while nodes.count > 0 {
             let lastNode = nodes.removeLast()
-            let temp = lastNode.left
-            lastNode.left = lastNode.right
-            lastNode.right = temp
+            
+            (lastNode.left, lastNode.right) = (lastNode.right, lastNode.left)
             
             if lastNode.left != nil {
                 nodes.append(lastNode.left!)
@@ -118,6 +116,17 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(node_3.right, node_6)
         XCTAssertEqual(node_2.left, node_5)
         XCTAssertEqual(node_2.right, node_4)
+        
+        //镜像回去，测试循环的方法
+        solution.MirrorRecursively(node_1)
+        solution.MirrorIteratively(node_1)
+        XCTAssertEqual(node_1.value, 8)
+        XCTAssertEqual(node_1.left, node_3)
+        XCTAssertEqual(node_1.right, node_2)
+        XCTAssertEqual(node_3.left, node_7)
+        XCTAssertEqual(node_3.right, node_6)
+        XCTAssertEqual(node_2.left, node_5)
+        XCTAssertEqual(node_2.right, node_4)
     }
     // 测试二叉树：出叶子结点之外，左右的结点都有且只有一个左子结点
     //            8
@@ -142,6 +151,16 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(node_2.right, node_3)
         XCTAssertEqual(node_3.right, node_4)
         XCTAssertEqual(node_4.right, node_5)
+        
+        //镜像回去
+        solution.MirrorRecursively(node_1)
+        solution.MirrorIteratively(node_1)
+        XCTAssertEqual(node_1.value, 8)
+        XCTAssertEqual(node_1.right, node_2)
+        XCTAssertEqual(node_2.right, node_3)
+        XCTAssertEqual(node_3.right, node_4)
+        XCTAssertEqual(node_4.right, node_5)
+        
     }
     // 测试二叉树：出叶子结点之外，左右的结点都有且只有一个右子结点
     //            8
@@ -166,17 +185,36 @@ class UnitTests: XCTestCase {
         XCTAssertEqual(node_2.left, node_3)
         XCTAssertEqual(node_3.left, node_4)
         XCTAssertEqual(node_4.left, node_5)
+        
+        //镜像回去
+        solution.MirrorRecursively(node_1)
+        solution.MirrorIteratively(node_1)
+        XCTAssertEqual(node_1.value, 8)
+        XCTAssertEqual(node_1.left, node_2)
+        XCTAssertEqual(node_2.left, node_3)
+        XCTAssertEqual(node_3.left, node_4)
+        XCTAssertEqual(node_4.left, node_5)
     }
     // 测试空二叉树：根结点为空指针
     func testCase4(){
         let node_1: BinaryTreeNode? = nil
         solution.MirrorRecursively(node_1)
         XCTAssertNil(node_1)
+        
+        //镜像回去，循环方法测试
+        solution.MirrorRecursively(node_1)
+        solution.MirrorIteratively(node_1)
+        XCTAssertNil(node_1)
     }
     // 测试只有一个结点的二叉树
     func testCase5(){
         let node_1 = BinaryTreeNode(value: 8, parent: nil, left: nil, right: nil)
         solution.MirrorRecursively(node_1)
+        XCTAssertEqual(node_1.value, 8)
+        
+        //镜像回去
+        solution.MirrorRecursively(node_1)
+        solution.MirrorIteratively(node_1)
         XCTAssertEqual(node_1.value, 8)
     }
     

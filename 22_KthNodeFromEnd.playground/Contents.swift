@@ -29,7 +29,7 @@ class Solution {
      - Returns: 倒数第k个节点（从1开始计数，最后一个即为倒数第1个）
      */
     func FindKthToTail(_ head: ListNode?, k: Int) -> ListNode? {
-        if head == nil || k == 0 {
+        if head == nil || k <= 0 {
             return nil
         }
         var pNode1: ListNode? = head
