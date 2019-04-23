@@ -20,7 +20,9 @@ class Solution {
         if chars.count == 0 {
             return [String]()
         }
-        return Permutation(chars, startIndex: 0)
+        var result = [String]()
+        Permutation(chars, startIndex: 0, result: &result)
+        return result
     }
     /**
      返回该字符串中字符的所有排列
@@ -29,8 +31,7 @@ class Solution {
         - startIndex: 开始排列的数组索引
      - Returns: 字符所有可能的排列
      */
-    private func Permutation(_ chars:[Character], startIndex: Int) -> [String] {
-        var result = [String]()
+    private func Permutation(_ chars:[Character], startIndex: Int, result: inout [String]){
         var chars = chars
         if startIndex == chars.count {
             result.append(String(chars))
@@ -39,12 +40,11 @@ class Solution {
                 
                 (chars[index], chars[startIndex]) = (chars[startIndex], chars[index])
                 
-                result.append(contentsOf: Permutation(chars, startIndex: startIndex + 1))
+                Permutation(chars, startIndex: startIndex + 1, result: &result)
                 
                 (chars[index], chars[startIndex]) = (chars[startIndex], chars[index])
             }
         }
-        return result
     }
 }
 
