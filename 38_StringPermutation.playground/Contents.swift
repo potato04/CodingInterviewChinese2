@@ -36,15 +36,12 @@ class Solution {
             result.append(String(chars))
         } else {
             for index in startIndex..<chars.count {
-                var temp = chars[index]
-                chars[index] = chars[startIndex]
-                chars[startIndex] = temp
+                
+                (chars[index], chars[startIndex]) = (chars[startIndex], chars[index])
                 
                 result.append(contentsOf: Permutation(chars, startIndex: startIndex + 1))
                 
-                temp = chars[index]
-                chars[index] = chars[startIndex]
-                chars[startIndex] = temp
+                (chars[index], chars[startIndex]) = (chars[startIndex], chars[index])
             }
         }
         return result
