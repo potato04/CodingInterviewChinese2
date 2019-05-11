@@ -63,7 +63,7 @@ class Solution {
             return
         }
         //把 nodes 当作栈使用
-        var nodes = Array<BinaryTreeNode>()
+        var nodes = [BinaryTreeNode]()
         nodes.append(node)
         while nodes.count > 0 {
             let lastNode = nodes.removeLast()
